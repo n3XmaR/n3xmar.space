@@ -306,3 +306,28 @@ content:
           - name: description
             label: Description
             type: text
+
+  # =========================
+  # Maybe, Someday
+  # =========================
+  - name: maybe
+    label: Maybe, Someday
+    type: file
+    path: src/data/maybe.json
+    format: json
+    list: true
+
+    fields:
+      - name: title
+        label: Idea
+        type: string
+        required: true
+
+      - name: done
+        label: Done
+        type: boolean
+        default: false
+
+      - name: link
+        label: Link (optional)
+        type: string

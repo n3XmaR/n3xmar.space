@@ -1,0 +1,222 @@
+---
+import '../styles/style.css';
+import SiteHead from '../components/SiteHead.astro';
+import ideas from '../data/maybe.json';
+
+type MaybeIdea = {
+  title: string;
+  done?: boolean;
+  link?: string;
+};
+
+// Keep the original order within each group, with finished ideas at the bottom.
+const sortedIdeas = [...(ideas as MaybeIdea[])].sort(
+  (a, b) => Number(Boolean(a.done)) - Number(Boolean(b.done))
+);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SiteHead
+      title="Maybe, Someday | n3Xm@R"
+      description="Random things I might build, learn, read, or explore. No deadlines, no promises."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="maybe-page">
+    <main class="maybe-shell">
+      <header class="maybe-header">
+        <a href="/" class="back-link">Back home ←</a>
+        <a href="/" class="maybe-brand">n3Xm@R</a>
+      </header>
+
+      <section class="maybe-intro">
+        <p>/ MAYBE</p>
+        <h1>Maybe, someday.</h1>
+        <span>Things I want to build, learn, read, or explore. No particular order, no deadlines, no promises.</span>
+      </section>
+
+      <section aria-label="Things I might do" class="maybe-section">
+        {sortedIdeas.length > 0 ? (
+          <ul class="maybe-list">
+            {sortedIdeas.map((idea) => {
+              const href = idea.link?.trim() ?? '';
+              const external = /^https?:\/\//i.test(href);
+              const safeLink = external || (href.startsWith('/') && !href.startsWith('//'));
+
+              return (
+                <li class={idea.done ? 'maybe-item is-done' : 'maybe-item'}>
+                  <span class="idea-dash" aria-hidden="true">—</span>
+                  <div class="idea-content">
+                    <span class="idea-title">{idea.title}</span>
+                    {idea.done && safeLink && (
+                      <a
+                        class="idea-link"
+                        href={href}
+                        target={external ? '_blank' : undefined}
+                        rel={external ? 'noopener noreferrer' : undefined}
+                      >
+                        ↗ View
+                      </a>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p class="maybe-empty">Nothing here yet. Maybe someday.</p>
+        )}
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  .maybe-page {
+    min-height: 100vh;
+    background: #080808;
+  }
+
+  .maybe-shell {
+    width: min(1100px, calc(100% - 36px));
+    max-width: 1100px;
+    margin: 22px auto;
+    padding: 24px 30px 50px;
+    border-radius: 20px;
+    background: var(--bg);
+    min-height: calc(100vh - 44px);
+  }
+
+  .maybe-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 0 30px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .back-link {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .maybe-brand {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 19px;
+  }
+
+  .maybe-intro {
+    padding: 48px 0 38px;
+    text-align: left;
+  }
+
+  .maybe-intro p {
+    margin: 0 0 16px;
+    color: var(--accent);
+    font-size: 13px;
+  }
+
+  .maybe-intro h1 {
+    margin: 0 0 14px;
+    color: var(--text);
+    font-size: clamp(25px, 4vw, 35px);
+    line-height: 1.2;
+  }
+
+  .maybe-intro span {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .maybe-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .maybe-item {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    border-bottom: 1px solid var(--divider);
+    padding: 19px 0;
+    min-height: 60px;
+  }
+
+  .idea-dash {
+    flex: 0 0 auto;
+    color: var(--accent);
+  }
+
+  .idea-content {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+
+  .idea-title {
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+
+  .is-done .idea-title {
+    color: var(--side-muted);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+
+  .is-done .idea-dash {
+    color: var(--side-muted);
+  }
+
+  .idea-link {
+    color: var(--accent);
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .idea-link:hover,
+  .idea-link:focus-visible {
+    text-decoration: underline;
+  }
+
+  .maybe-empty {
+    padding: 22px 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .maybe-shell {
+      width: calc(100% - 20px);
+      min-height: calc(100vh - 20px);
+      margin: 10px auto;
+      padding: 18px 18px 28px;
+      border-radius: 14px;
+    }
+
+    .maybe-header { padding-bottom: 22px; }
+    .maybe-intro { padding: 36px 0 32px; }
+    .maybe-intro p { font-size: 11px; }
+    .maybe-intro span { font-size: 12px; }
+    .maybe-item { gap: 12px; padding: 16px 0; }
+    .idea-title { font-size: 14px; }
+    .idea-link { font-size: 11px; }
+  }
+</style>
