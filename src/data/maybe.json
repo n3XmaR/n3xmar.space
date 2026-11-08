@@ -2,5 +2,61 @@
   {
     "title": "Earn the CPTS certification",
     "done": false
+  },
+  {
+    "title": "Earn the OSCP certification",
+    "done": false
+  },
+  {
+    "title": "Earn the CDSA certification",
+    "done": false
+  },
+  {
+    "title": "Earn the CEH certification",
+    "done": false
+  },
+  {
+    "title": "Build a port scanner from scratch",
+    "done": false
+  },
+  {
+    "title": "Build a network analysis tool",
+    "done": false
+  },
+  {
+    "title": "Learn reverse engineering",
+    "done": false
+  },
+  {
+    "title": "Build my own Arch-based Linux distro",
+    "done": false
+  },
+  {
+    "title": "Build a personal Android app",
+    "done": false
+  },
+  {
+    "title": "Read The Brothers Karamazov — Dostoevsky",
+    "done": false
+  },
+  {
+    "title": "Read Crime and Punishment — Dostoevsky",
+    "done": false
+  },
+  {
+    "title": "Read No Longer Human — Osamu Dazai",
+    "done": false
+  },
+  {
+    "title": "Read Atomic Habits — James Clear",
+    "done": false
+  },
+  {
+    "title": "Read Linux Basics for Hackers",
+    "done": false
+  },
+  {
+    "title": "Read Network Basics for Hackers",
+    "done": false
   }
 ]
