@@ -1,0 +1,127 @@
+/* =========================
+   11. Terminal
+========================= */
+
+.terminal-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 24px;
+  padding: 12px 20px;
+  font-family: monospace;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.terminal-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+  transform: translateY(-3px);
+}
+
+#terminal-modal {
+  width: min(90vw, 700px);
+  height: min(70vh, 450px);
+  padding: 0;
+  background: var(--terminal-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  font-family: monospace;
+  overflow: hidden;
+}
+
+#terminal-modal::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-title {
+  display: flex;
+  gap: 12px;
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.terminal-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.terminal-close:hover {
+  color: var(--accent);
+}
+
+.terminal-body {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 49px);
+  padding: 20px;
+  gap: 16px;
+}
+
+#terminal-output {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 1.7;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+#terminal-output p {
+  margin: 0 0 6px;
+}
+
+.terminal-welcome {
+  color: var(--accent);
+}
+
+.terminal-hint {
+  color: var(--muted);
+}
+
+#terminal-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#terminal-form label {
+  color: var(--accent);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+#terminal-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: monospace;
+  font-size: 13px;
+}
+
+
