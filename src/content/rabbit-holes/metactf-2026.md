@@ -1,9 +1,9 @@
-
 ---
 title: "MetaCTF 2026: The One That Got Away"
-description: "A day of web challenges, endless 403s, a last-minute flag, and a free shirt."
-category: "CTF · Competition"
+description: A day of web challenges, endless 403s, a last-minute flag, and a free shirt.
+category: CTF · Competition
 date: 2026-11-05
+---
 ---
 
 Another CTF, another day of staring at terminals and questioning my life choices.
@@ -47,3 +47,4 @@ Oh, and I got a free shirt. So that's a win, I guess.
 **Until the next one.**
 
 ![Me during MetaCTF](/images/rabbit-holes/metactf-2026/mypic.jpg)
+
