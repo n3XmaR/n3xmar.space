@@ -1,3 +1,5 @@
+import { applyLinkTargets } from './link-targets';
+
 const modal = document.querySelector<HTMLDialogElement>(
     '#certificate-modal'
   );
@@ -42,6 +44,8 @@ const modal = document.querySelector<HTMLDialogElement>(
 
         if (template) {
           body.appendChild(template.content.cloneNode(true));
+          // Certificate Markdown is mounted after DOMContentLoaded.
+          applyLinkTargets(body);
         }
 
         modal.scrollTop = 0;

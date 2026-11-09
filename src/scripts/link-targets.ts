@@ -1,6 +1,6 @@
 // Use one navigation policy, including links rendered from Markdown.
-function applyLinkTargets() {
-  for (const link of document.querySelectorAll<HTMLAnchorElement>('a[href]')) {
+export function applyLinkTargets(root: ParentNode = document) {
+  for (const link of root.querySelectorAll<HTMLAnchorElement>('a[href]')) {
     const href = link.getAttribute('href')?.trim() ?? '';
     if (!href || href.startsWith('#')) continue;
     if (/^mailto:/i.test(href)) {
@@ -27,7 +27,7 @@ function applyLinkTargets() {
   }
 }
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', applyLinkTargets, { once: true });
+  document.addEventListener('DOMContentLoaded', () => applyLinkTargets(), { once: true });
 } else {
   applyLinkTargets();
 }
