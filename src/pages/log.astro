@@ -2,6 +2,7 @@
 import '../styles/style.css';
 import SiteHead from '../components/SiteHead.astro';
 import logData from '../data/log.json';
+import { resolveSiteLink } from '../utils/links';
 
 type LogEntry = {
   date: string;
@@ -62,9 +63,7 @@ for (const entry of entries) {
 
             <ol class="log-entries">
               {group.items.map((entry) => {
-                const href = entry.link?.trim() ?? '';
-                const external = /^https?:\/\//i.test(href);
-                const safeLink = external || (href.startsWith('/') && !href.startsWith('//'));
+                const { href, external, valid: safeLink } = resolveSiteLink(entry.link);
 
                 return (
                   <li class="log-entry">

@@ -2,6 +2,7 @@
 import '../styles/style.css';
 import SiteHead from '../components/SiteHead.astro';
 import ideas from '../data/maybe.json';
+import { resolveSiteLink } from '../utils/links';
 
 type MaybeIdea = {
   title: string;
@@ -49,9 +50,7 @@ const sortedIdeas = [...(ideas as MaybeIdea[])].sort(
         {sortedIdeas.length > 0 ? (
           <ul class="maybe-list">
             {sortedIdeas.map((idea) => {
-              const href = idea.link?.trim() ?? '';
-              const external = /^https?:\/\//i.test(href);
-              const safeLink = external || (href.startsWith('/') && !href.startsWith('//'));
+              const { href, external, valid: safeLink } = resolveSiteLink(idea.link);
 
               return (
                 <li class={idea.done ? 'maybe-item is-done' : 'maybe-item'}>
