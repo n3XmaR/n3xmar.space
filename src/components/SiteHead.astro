@@ -11,6 +11,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const image = new URL('/avatar.png', Astro.site ?? Astro.url);
 ---
 
+<title>{title}</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
 <script is:inline src="/oneko.js" data-cat="/oneko.gif" defer></script>
 

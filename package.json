@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "n3xmar-space",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -13,6 +13,7 @@
     "prebuild": "node scripts/generate-favicon.mjs"
   },
   "dependencies": {
-    "astro": "^7.4.5"
+    "astro": "^7.4.5",
+    "sharp": "^0.35.5"
   }
 }
