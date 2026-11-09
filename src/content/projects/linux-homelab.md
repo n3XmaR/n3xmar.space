@@ -9,7 +9,7 @@ tags:
   - Python
   - Self-Hosting
   - Networking
-image: /images/projects/homelab.png
+image: /images/projects/sponge/homelab.png
 ---
 I found an old laptop sitting around and decided to turn it into something useful.
 
@@ -40,11 +40,11 @@ I used **Docker** to deploy and manage multiple services:
 
 By connecting these services, I built a system where media requests, library management, and streaming could work together with minimal manual intervention.
 
-![](/images/projects/sponge-jellyseerr.jpg)
+![](/images/projects/sponge/sponge-jellyseerr.jpg)
 
 
 
-![](/images/projects/sponge-jellyfin.jpg)
+![](/images/projects/sponge/sponge-jellyfin.jpg)
 
 ## What I Learned
 

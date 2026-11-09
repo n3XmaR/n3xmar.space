@@ -8,7 +8,7 @@ tags:
   - CSS
   - JavaScript
   - Chart.js
-image: /images/projects/404timer.png
+image: /images/projects/404-timer/404timer.png
 github: https://github.com/n3XmaR/404-Timer
 ---
 It started as a simple timer to track how much time I spend studying.
@@ -27,15 +27,15 @@ First, I wanted to organize my study time by topic. Then I added progress tracki
 
 ### Focus Dashboard
 
-![](/images/projects/focus-dashboard.png)
+![](/images/projects/404-timer/focus-dashboard.png)
 
 ### Study Analytics
 
-![](/images/projects/study-analytics.png)
+![](/images/projects/404-timer/study-analytics.png)
 
 ### YouTube Playlist Analyzer
 
-![](/images/projects/playlist-analyzer.png)
+![](/images/projects/404-timer/playlist-analyzer.png)
 
 
 

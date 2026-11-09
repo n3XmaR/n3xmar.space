@@ -2,8 +2,8 @@
 media:
   - name: writeups
     label: Writeup Images
-    input: public/images/writeups
-    output: /images/writeups
+    input: public/images/rabbit-holes
+    output: /images/rabbit-holes
     rename: safe
 
   - name: projects

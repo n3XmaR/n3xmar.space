@@ -9,7 +9,7 @@ date: 2026-04-15
 
 A Rick and Morty CTF. Help turn Rick back into a human!
 
-![](/images/writeups/pickle-rick-challenge.png)
+![](/images/rabbit-holes/pickle-rick/pickle-rick-challenge.png)
 
 # Solution
 
@@ -48,7 +48,7 @@ I found:
 
 So I opened the web page on port 80.
 
-![](/images/writeups/pickle-rick-homepage.png)
+![](/images/rabbit-holes/pickle-rick/pickle-rick-homepage.png)
 
 Then I opened the page source to check it:
 
@@ -80,14 +80,14 @@ I opened `robots.txt` first and found `Wubbalubbadubdub`.
 
 Then I moved to `login.php`.
 
-![](/images/writeups/pickle-rick-login.png)
+![](/images/rabbit-holes/pickle-rick/pickle-rick-login.png)
 
 I tried:
 
 `Username: R1ckRul3s`  
 `Password: Wubbalubbadubdub`
 
-![](/images/writeups/pickle-rick-command-panel.png)
+![](/images/rabbit-holes/pickle-rick/pickle-rick-command-panel.png)
 
 I ran `ls -la`:
 
@@ -107,7 +107,7 @@ drwxrwxr-x 2 ubuntu ubuntu 4096 Feb 10  2019 assets
 
 Then I tried `cat Sup3rS3cretPickl3Ingred.txt`, but the command was blocked.
 
-![](/images/writeups/pickle-rick-command-blocked-1.png)
+![](/images/rabbit-holes/pickle-rick/pickle-rick-command-blocked-1.png)
 
 While reading the page source, I also found a Base64-looking string:
 
@@ -125,7 +125,7 @@ I ran `ls /` and noticed two directories worth checking: `/home` and `/root`.
 
 Inside `/home`, I found `/home/rick`.
 
-![](/images/writeups/pickle-rick-second-ingredient.png)
+![](/images/rabbit-holes/pickle-rick/pickle-rick-second-ingredient.png)
 
 I ran `strings "/home/rick/second ingredients"` and got the second ingredient: `1 jerry tear`.
 
@@ -145,6 +145,6 @@ The `NOPASSWD: ALL` entry meant I could run commands as root without a password.
 
 So I listed the root directory:
 
-![](/images/writeups/pickle-rick-root-directory.png)
+![](/images/rabbit-holes/pickle-rick/pickle-rick-root-directory.png)
 
 And found the third and final ingredient using `sudo strings /root/3rd.txt`: `fleeb juice`.

@@ -7,7 +7,7 @@ tags:
   - Python
   - Security
   - CLI
-image: /images/projects/ghostpass.png
+image: /images/projects/ghostpass/ghostpass.png
 github: https://github.com/n3XmaR/GhostPass
 ---
 # GhostPass 👻
@@ -16,7 +16,7 @@ After learning Python, I wanted to put what I'd learned into practice.
 
 So I built GhostPass, a simple CLI password manager using Python.
 
-![](/images/projects/ghostpass-cli.png)
+![](/images/projects/ghostpass/ghostpass-cli.png)
 
 ## Features
 
@@ -25,7 +25,7 @@ So I built GhostPass, a simple CLI password manager using Python.
 - Check passwords against the RockYou wordlist.
 - Obfuscate stored passwords using XOR and Base64.
 
-![](/images/projects/ghostpass-leak.png)
+![](/images/projects/ghostpass/ghostpass-leak.png)
 
 ## What I Learned
 
