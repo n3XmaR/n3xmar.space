@@ -100,105 +100,16 @@ const bodies = await Promise.all(
     <h3 id="modal-title"></h3>
     <p id="modal-issuer"></p>
     <p id="modal-meta"></p>
-    <p id="modal-meta"></p>
     <div id="modal-body" class="certificate-content"></div>
   </dialog>
 </ArchiveLayout>
 
 
-<script>
-  const modal = document.querySelector<HTMLDialogElement>(
-    '#certificate-modal'
-  );
-
-  if (modal) {
-    const image = modal.querySelector<HTMLImageElement>('#modal-image');
-    const title = modal.querySelector<HTMLElement>('#modal-title');
-    const issuer = modal.querySelector<HTMLElement>('#modal-issuer');
-    const meta = modal.querySelector<HTMLElement>('#modal-meta');
-    const body = modal.querySelector<HTMLElement>('#modal-body');
-
-    document.querySelectorAll<HTMLButtonElement>(
-      '.archive-grid .certificate-card'
-    ).forEach((card) => {
-      card.addEventListener('click', () => {
-        if (!image || !title || !issuer || !meta || !body) return;
-
-        image.src = card.dataset.image ?? '';
-        image.alt = `${card.dataset.title ?? 'Certificate'} certificate`;
-
-        title.textContent = card.dataset.title ?? '';
-        issuer.textContent = card.dataset.issuer ?? '';
-
-        const { type, start, end } = card.dataset;
-
-        meta.textContent = [
-          type === 'certification' ? 'Certification' : 'Path Completion',
-          start && end
-            ? `${start} – ${end}`
-            : end
-              ? `Completed: ${end}`
-              : start
-                ? `Started: ${start}`
-                : ''
-        ].filter(Boolean).join(' · ');
-
-        body.replaceChildren();
-
-        const template = document.getElementById(
-          `certificate-body-${card.dataset.id}`
-        ) as HTMLTemplateElement | null;
-
-        if (template) {
-          body.appendChild(template.content.cloneNode(true));
-        }
-
-        modal.scrollTop = 0;
-        modal.showModal();
-      });
-    });
-
-    modal.querySelector('.modal-close')?.addEventListener(
-      'click',
-      () => modal.close()
-    );
-
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) modal.close();
-    });
-  }
-</script>
+<script>import '../../scripts/certificate-modal';</script>
 
 
 
-<script>
-  const filters = document.querySelectorAll<HTMLButtonElement>(
-    '.filter-btn'
-  );
-
-  const cards = document.querySelectorAll<HTMLElement>(
-    '.archive-grid .certificate-card'
-  );
-
-  filters.forEach((button) => {
-    button.addEventListener('click', () => {
-      const selected = button.dataset.filter;
-
-      filters.forEach((filter) => {
-        filter.setAttribute(
-          'aria-pressed',
-          String(filter === button)
-        );
-      });
-
-      cards.forEach((card) => {
-        card.hidden =
-          selected !== 'all' &&
-          card.dataset.type !== selected;
-      });
-    });
-  });
-</script>
+<script>import '../../scripts/certificate-filters';</script>
 
 
 
