@@ -35,22 +35,3 @@ No backend or database needed.
 ---
 
 Made with curiosity, not a plan.
-
-## Editing content
-
-Most updates should be made in **Pages CMS**, not in page templates. Its settings are in `.pages.yml`.
-
-- Projects, Rabbit Holes, and Certificates are Markdown collections under `src/content/`.
-- The Log is a single JSON list in `src/data/log.json`; you can add a record through CMS without creating a Markdown file.
-- Maybe and Currently are JSON files under `src/data/`.
-- Photos and screenshots are stored under `public/images/`, grouped by project or article.
-
-See [MAINTENANCE.md](docs/MAINTENANCE.md) for the site map, CMS workflow, image conventions, build commands, and troubleshooting steps.
-
-## Local development
-
-```bash
-npm ci
-npm run dev
-npm run build
-```
