@@ -16,8 +16,7 @@ const posts = (await getCollection('rabbit-holes')).sort(
     {posts.map((post) => (
       <article class="rabbit-item">
         <p class="rabbit-category">
-          {post.data.category}
-          ·
+          {post.data.category}{' · '}
           <time datetime={post.data.date.toISOString().slice(0, 10)}>
             {post.data.date.toLocaleDateString('en-US', {
               month: 'short',
