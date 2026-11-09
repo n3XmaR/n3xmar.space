@@ -1,22 +1,12 @@
 
+# One image library; site images retain their existing paths.
 media:
-  - name: writeups
-    label: Writeup Images
-    input: public/images/rabbit-holes
-    output: /images/rabbit-holes
+  - name: images
+    label: Images
+    input: public/images
+    output: /images
     rename: safe
-
-  - name: projects
-    label: Project Images
-    input: public/images/projects
-    output: /images/projects
-    rename: safe
-
-  - name: certificates
-    label: Certificate Images
-    input: public/images/certificates
-    output: /images/certificates
-    rename: safe
+    categories: [image]
 
 content:
   # =========================
@@ -69,7 +59,8 @@ content:
         options:
           format: markdown
           switcher: true
-          media: writeups
+          media: images
+          path: public/images/rabbit-holes
 
   # =========================
   # Projects
@@ -119,7 +110,8 @@ content:
         label: Cover Image
         type: image
         options:
-          media: projects
+          media: images
+          path: public/images/projects
 
       - name: github
         label: GitHub URL
@@ -131,7 +123,8 @@ content:
         options:
           format: markdown
           switcher: true
-          media: projects
+          media: images
+          path: public/images/projects
 
   # =========================
   # Certificates
@@ -170,7 +163,8 @@ content:
         type: image
         required: true
         options:
-          media: certificates
+          media: images
+          path: public/images/certificates
 
       
       - name: type
