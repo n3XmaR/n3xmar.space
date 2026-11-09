@@ -1,15 +1,21 @@
 ---
 import '../styles/style.css';
 import SiteHead from '../components/SiteHead.astro';
-import { getCollection } from 'astro:content';
+import logData from '../data/log.json';
 
-const entries = (await getCollection('log')).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+type LogEntry = {
+  date: string;
+  category: 'project' | 'event' | 'learning' | 'milestone';
+  title: string;
+  link?: string;
+};
+
+const entries: LogEntry[] = [...logData] as LogEntry[];
+entries.sort((a, b) => b.date.localeCompare(a.date));
 
 const years: { year: number; items: typeof entries }[] = [];
 for (const entry of entries) {
-  const year = entry.data.date.getUTCFullYear();
+  const year = new Date(`${entry.date}T00:00:00Z`).getUTCFullYear();
   let group = years.find((item) => item.year === year);
   if (!group) {
     group = { year, items: [] };
@@ -57,14 +63,14 @@ for (const entry of entries) {
 
             <ol class="log-entries">
               {group.items.map((entry) => {
-                const href = entry.data.link?.trim() ?? '';
+                const href = entry.link?.trim() ?? '';
                 const external = /^https?:\/\//i.test(href);
                 const safeLink = external || (href.startsWith('/') && !href.startsWith('//'));
 
                 return (
                   <li class="log-entry">
                     <div class="entry-content">
-                      <span class="entry-category">{entry.data.category}</span>
+                      <span class="entry-category">{entry.category}</span>
                       <h3>
                         {safeLink ? (
                           <a
@@ -72,15 +78,15 @@ for (const entry of entries) {
                             target={external ? '_blank' : undefined}
                             rel={external ? 'noopener noreferrer' : undefined}
                           >
-                            {entry.data.title}
+                            {entry.title}
                           </a>
                         ) : (
-                          entry.data.title
+                          entry.title
                         )}
                       </h3>
                     </div>
-                    <time datetime={entry.data.date.toISOString().slice(0, 10)}>
-                      {entry.data.date.toLocaleDateString('en-US', {
+                    <time datetime={entry.date}>
+                      {new Date(`${entry.date}T00:00:00Z`).toLocaleDateString('en-US', {
                         month: 'short',
                         day: '2-digit',
                         timeZone: 'UTC'

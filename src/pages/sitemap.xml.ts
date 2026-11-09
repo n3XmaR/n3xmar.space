@@ -13,6 +13,7 @@ export const GET: APIRoute = async ({ site }) => {
     '/rabbit-holes/',
     '/certificates/',
     '/log/',
+    '/maybe/',
     ...projects.map((project) => `/projects/${project.id}/`),
     ...rabbitHoles.map((post) => `/rabbit-holes/${post.id}/`)
   ];

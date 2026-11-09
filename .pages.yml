@@ -212,25 +212,14 @@ content:
 
 
   # =========================
-  # The Log
+  # The Log - one JSON list, editable in Pages CMS
   # =========================
   - name: log
     label: The Log
-    type: collection
-    path: src/content/log
-    format: yaml-frontmatter
-
-    filename:
-      template: "{primary}.md"
-      field: create
-
-    view:
-      fields: [date, category, title]
-      primary: title
-      sort: [date, title]
-      default:
-        sort: date
-        order: desc
+    type: file
+    path: src/data/log.json
+    format: json
+    list: true
 
     fields:
       - name: date

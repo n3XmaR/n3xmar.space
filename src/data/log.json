@@ -1,0 +1,70 @@
+[
+  {
+    "date": "2026-10-17",
+    "category": "event",
+    "title": "Placed 11th at Cryptix CTF Finals"
+  },
+  {
+    "date": "2026-07-25",
+    "category": "event",
+    "title": "Attended HTB Jordan Meetup"
+  },
+  {
+    "date": "2026-07-23",
+    "category": "project",
+    "title": "404! Timer joined the projects",
+    "link": "https://n3xmar.space/projects/404_timer/"
+  },
+  {
+    "date": "2026-03-17",
+    "category": "learning",
+    "title": "Completed TryHackMe Web Fundamentals",
+    "link": "https://n3xmar.space/certificates/"
+  },
+  {
+    "date": "2026-03-10",
+    "category": "learning",
+    "title": "Completed TryHackMe Jr Penetration Tester",
+    "link": "/certificates/"
+  },
+  {
+    "date": "2026-02-07",
+    "category": "learning",
+    "title": "Completed TryHackMe Cyber Security 101",
+    "link": "https://n3xmar.space/certificates/"
+  },
+  {
+    "date": "2026-02-04",
+    "category": "project",
+    "title": "Built Sponge - My HomeLab",
+    "link": "https://n3xmar.space/projects/linux-homelab/"
+  },
+  {
+    "date": "2026-01-05",
+    "category": "project",
+    "title": "Built GhostPass",
+    "link": "https://n3xmar.space/projects/ghostpass/"
+  },
+  {
+    "date": "2025-12-24",
+    "category": "learning",
+    "title": "Completed Advent of Cyber 2025",
+    "link": "https://n3xmar.space/certificates/"
+  },
+  {
+    "date": "2025-11-06",
+    "category": "event",
+    "title": "Placed 9th at IEEE Jordan Cybersecurity Challenge"
+  },
+  {
+    "date": "2025-08-31",
+    "category": "learning",
+    "title": "Completed TryHackMe Pre Security",
+    "link": "https://n3xmar.space/certificates/"
+  },
+  {
+    "date": "2025-04-16",
+    "category": "event",
+    "title": "My First CTF - RLCTF (38th/40)"
+  }
+]
