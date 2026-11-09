@@ -31,3 +31,11 @@ if (document.readyState === 'loading') {
 } else {
   applyLinkTargets();
 }
+
+// Capture clicks too: rich-text links can be inserted after the initial scan.
+document.addEventListener('click', (event) => {
+  if (!(event.target instanceof Element)) return;
+  const link = event.target.closest<HTMLAnchorElement>('a[href]');
+  if (!link) return;
+  applyLinkTargets(link.parentElement ?? document);
+}, true);
