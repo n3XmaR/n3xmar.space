@@ -55,7 +55,6 @@ const sortedIdeas = [...(ideas as MaybeIdea[])].sort(
 
               return (
                 <li class={idea.done ? 'maybe-item is-done' : 'maybe-item'}>
-                  <span class="idea-dash" aria-hidden="true">—</span>
                   <div class="idea-content">
                     <span class="idea-title">{idea.title}</span>
                     {idea.done && safeLink && (
@@ -142,23 +141,21 @@ const sortedIdeas = [...(ideas as MaybeIdea[])].sort(
   }
 
   .maybe-list {
-    list-style: none;
+    list-style: disc outside;
     margin: 0;
-    padding: 0;
+    padding-left: 22px;
   }
 
   .maybe-item {
-    display: flex;
-    gap: 16px;
-    align-items: baseline;
+    display: list-item;
     border-bottom: 1px solid var(--divider);
     padding: 19px 0;
     min-height: 60px;
   }
 
-  .idea-dash {
-    flex: 0 0 auto;
+  .maybe-item::marker {
     color: var(--accent);
+    font-size: 13px;
   }
 
   .idea-content {
@@ -181,7 +178,7 @@ const sortedIdeas = [...(ideas as MaybeIdea[])].sort(
     text-decoration-thickness: 1px;
   }
 
-  .is-done .idea-dash {
+  .is-done::marker {
     color: var(--side-muted);
   }
 
@@ -215,7 +212,7 @@ const sortedIdeas = [...(ideas as MaybeIdea[])].sort(
     .maybe-intro { padding: 36px 0 32px; }
     .maybe-intro p { font-size: 11px; }
     .maybe-intro span { font-size: 12px; }
-    .maybe-item { gap: 12px; padding: 16px 0; }
+    .maybe-item { padding: 16px 0; }
     .idea-title { font-size: 14px; }
     .idea-link { font-size: 11px; }
   }
