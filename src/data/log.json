@@ -66,5 +66,11 @@
     "date": "2025-04-16",
     "category": "event",
     "title": "My First CTF - RLCTF (38th/40)"
+  },
+  {
+    "date": "2026-11-05",
+    "category": "event",
+    "title": "Placed 11th at MetaCTF 2026 Finals",
+    "link": "https://n3xmar.space/rabbit-holes/metactf-2026/"
   }
 ]
