@@ -3,6 +3,8 @@ import '../styles/style.css';
 import { getCollection, render } from 'astro:content';
 import SiteHead from '../components/SiteHead.astro';
 import currently from '../data/currently.json';
+import activityLog from '../data/log.json';
+import maybeIdeas from '../data/maybe.json';
 
 const siteName = 'n3Xm@R';
 
@@ -27,6 +29,36 @@ const certificateBodies = await Promise.all(
     Content: (await render(certificate)).Content,
   }))
 );
+
+/** A CMS-backed snapshot for the fictional terminal filesystem. */
+const terminalCatalog = {
+  projects: projects.map((project) => ({
+    name: `${project.id}.txt`,
+    content: [project.data.title, project.data.description, `Visit: /projects/${project.id}/`].join('\n')
+  })),
+  rabbitHoles: rabbitHoles.map((entry) => ({
+    name: `${entry.id}.txt`,
+    content: [entry.data.title, entry.data.description, `Visit: /rabbit-holes/${entry.id}/`].join('\n')
+  })),
+  certificates: certificates.map((certificate) => ({
+    name: `${certificate.id}.txt`,
+    content: [
+      certificate.data.title,
+      `Issuer: ${certificate.data.issuer}`,
+      `Type: ${certificate.data.type}`,
+      'Visit: /certificates/'
+    ].join('\n')
+  })),
+  currently: [
+    `MAIN QUEST: ${currently.mainQuest.title}`,
+    currently.mainQuest.status,
+    currently.mainQuest.description,
+    ...currently.sideQuests.map((quest) => `SIDE QUEST: ${quest.title} — ${quest.description}`)
+  ].join('\n'),
+  log: activityLog.map((entry) => `${entry.date} | ${entry.category} | ${entry.title}`).join('\n'),
+  maybe: maybeIdeas.map((idea) => `${idea.done ? '[x]' : '[ ]'} ${idea.title}`).join('\n')
+};
+const terminalCatalogJson = JSON.stringify(terminalCatalog).replace(/</g, '\\u003c');
 ---
 
 <!DOCTYPE html>
@@ -304,6 +336,9 @@ const certificateBodies = await Promise.all(
           <span>Made with curiosity, not a plan.</span>
         </div>
       </footer>
+
+      <!-- Keep terminal listings in sync with the CMS collections on every build. -->
+      <script id="terminal-catalog" type="application/json" set:html={terminalCatalogJson}></script>
 
       <!-- Terminal Easter Egg / Mini CTF -->
       <dialog id="terminal-modal" aria-label="Interactive terminal">

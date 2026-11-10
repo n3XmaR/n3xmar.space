@@ -33,7 +33,34 @@
           JSON.parse(localStorage.getItem('n3x_ctf_solved') ?? '[]')
         );
 
-        // null = directory, string = file content.
+        // The terminal is fictional, but visible listings come from Astro content.
+        type TerminalFile = { name: string; content: string };
+        type TerminalCatalog = {
+          projects: TerminalFile[];
+          rabbitHoles: TerminalFile[];
+          certificates: TerminalFile[];
+          currently: string;
+          log: string;
+          maybe: string;
+        };
+        const catalogNode = document.querySelector('#terminal-catalog');
+        let catalog: TerminalCatalog = {
+          projects: [], rabbitHoles: [], certificates: [],
+          currently: '', log: '', maybe: ''
+        };
+        try {
+          if (catalogNode?.textContent) {
+            catalog = JSON.parse(catalogNode.textContent) as TerminalCatalog;
+          }
+        } catch (error) {
+          console.warn('Terminal catalog was unavailable', error);
+        }
+
+        const listing = (entries: TerminalFile[]): Record<string, string> =>
+          Object.fromEntries(entries.map(({ name, content }) => [name, content]));
+
+        // null = virtual directory; text = the preview returned by 'cat'.
+        // Keep the hidden CTF path and flag unchanged.
         const fileSystem: Record<string, Record<string, string | null>> = {
           '/': { home: null },
           '/home': { visitor: null },
@@ -43,23 +70,17 @@
             certificates: null,
             secrets: null,
             '.archive': null,
+            'currently.txt': catalog.currently,
+            'log.txt': catalog.log,
+            'maybe.txt': catalog.maybe,
             'readme.txt':
               "Welcome to n3Xm@R's little corner of the internet.\n" +
+              'These notes follow the latest published site content.\n' +
               'Take a look around.'
           },
-          '/home/visitor/projects': {
-            'homelab.txt':
-              'Linux Homelab\nA self-hosted environment built using Linux and Docker.',
-            'ghostpass.txt': 'GhostPass\nA Python CLI password manager.'
-          },
-          '/home/visitor/rabbit-holes': {
-            'the-stranger.txt':
-              'The Stranger - Albert Camus\nA book that left me with more questions than answers.'
-          },
-          '/home/visitor/certificates': {
-            'pre-security.txt':
-              'Pre Security - TryHackMe\nAn introduction to cybersecurity fundamentals.'
-          },
+          '/home/visitor/projects': listing(catalog.projects),
+          '/home/visitor/rabbit-holes': listing(catalog.rabbitHoles),
+          '/home/visitor/certificates': listing(catalog.certificates),
           '/home/visitor/secrets': {
             'note.txt': 'Nothing useful here. Or maybe I forgot where I put it.'
           },
