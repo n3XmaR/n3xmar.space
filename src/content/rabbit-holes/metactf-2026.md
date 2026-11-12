@@ -6,6 +6,10 @@ date: 2026-11-05
 ---
 ---
 
+
+
+&nbsp;
+
 Another CTF, another day of staring at terminals and questioning my life choices.
 
 This time, I participated in **MetaCTF 2026** at Princess Sumaya University for Technology with my team, **No Shelter**.
