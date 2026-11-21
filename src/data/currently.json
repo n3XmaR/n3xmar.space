@@ -1,4 +1,3 @@
-
 {
   "mainQuest": {
     "title": "HTB CPTS",
@@ -7,8 +6,8 @@
   },
   "sideQuests": [
     {
-      "title": "Portfolio Website",
-      "description": "Building the website you're looking at right now."
+      "title": "NeoPheme",
+      "description": "Personal cybersecurity news dashboard: n8n + AI that collects, ranks, and summarizes daily security news."
     },
     {
       "title": "Crime and Punishment",
