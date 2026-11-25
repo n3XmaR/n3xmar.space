@@ -60,7 +60,8 @@
     "done": false
   },
   {
-    "title": "NeoPheme - A personal cybersecurity intelligence dashboard",
-    "done": false
+    "title": "MeerWatch - A personal cybersecurity intelligence dashboard",
+    "done": true,
+    "link": "https://n3xmar.space/projects/meerwatch/"
   }
 ]
