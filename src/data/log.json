@@ -72,5 +72,11 @@
     "category": "event",
     "title": "Placed 17th at MetaCTF 2026 Finals",
     "link": "https://n3xmar.space/rabbit-holes/metactf-2026/"
+  },
+  {
+    "date": "2026-11-25",
+    "category": "project",
+    "title": "MeerWatch",
+    "link": "https://n3xmar.space/projects/meerwatch/"
   }
 ]
